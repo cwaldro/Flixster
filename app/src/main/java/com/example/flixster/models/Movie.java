@@ -3,15 +3,20 @@ package com.example.flixster.models;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel //Movie class is parcelable
 public class Movie {
     String backdropPath;
     String posterPath;
     String title;
     String overview;
+
+    //default constructor for parcel
+    public Movie() {}
 
     //constructor takes in json object and create Movie
     public Movie(JSONObject jsonObject) throws JSONException {
