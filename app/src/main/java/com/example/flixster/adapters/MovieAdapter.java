@@ -73,7 +73,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         //constructor defines where data for views is coming from
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvTitle = itemView.findViewById(R.id.tvTitle2);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
             itemView.setOnClickListener(this);
