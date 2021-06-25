@@ -3,7 +3,9 @@
     package="com.example.flixster">
     <!-- declares app uses internet -->
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <queries>
+        <package android:name="com.google.android.youtube" />
+    </queries>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Flixster">
-        <activity android:name=".models.MovieDetailsActivity"></activity>
+        <activity android:name=".MovieTrailerActivity"></activity>
+        <activity android:name=".models.MovieDetailsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

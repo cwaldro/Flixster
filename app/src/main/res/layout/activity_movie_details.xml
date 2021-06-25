@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ECEAE1"
-    tools:context="com.codepath.flicks.MovieDetailsActivity">
+    tools:context=".models.MovieDetailsActivity">
 
     <TextView
         android:id="@+id/tvTitle2"

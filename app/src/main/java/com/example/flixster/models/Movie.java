@@ -17,6 +17,7 @@ public class Movie {
     String title;
     String overview;
     Double voteAverage;
+    int ID;
 
     //default constructor for parcel
     public Movie() {}
@@ -28,6 +29,7 @@ public class Movie {
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
         voteAverage = jsonObject.getDouble("vote_average");
+        ID = jsonObject.getInt("id");
     }
     //creates and returns list of movies that takes in data we got back
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
@@ -59,5 +61,9 @@ public class Movie {
 
     public Double getVoteAverage() {
         return voteAverage;
+    }
+
+    public int getID() {
+        return ID;
     }
 }
