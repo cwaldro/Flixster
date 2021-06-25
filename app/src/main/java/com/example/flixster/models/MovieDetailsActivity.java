@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.flixster.R;
+import com.example.flixster.databinding.ActivityMovieDetailsBinding;
 
 import org.parceler.Parcels;
 
@@ -24,11 +26,18 @@ public class MovieDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_details);
+        //view binding stores ActivityMovieDetails.xml -> binding var
+        ActivityMovieDetailsBinding binding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());
+//        setContentView(R.layout.activity_movie_details);
+
+        //activity layout stored in root
+        View view = binding.getRoot();
+        setContentView(view);
+
         // initialize view objects
-        tvTitle2 = (TextView) findViewById(R.id.tvTitle2);
-        tvOverview = (TextView) findViewById(R.id.tvOverview);
-        rbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
+        tvTitle2 = binding.tvTitle2;
+        tvOverview = binding.tvOverview;
+        rbVoteAverage = binding.rbVoteAverage;
 
         //unwrap movie passed in via intent using name as key
         movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));

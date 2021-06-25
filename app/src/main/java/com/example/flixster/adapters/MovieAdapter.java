@@ -3,6 +3,7 @@ package com.example.flixster.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.flixster.R;
+import com.example.flixster.databinding.ItemMovieBinding;
 import com.example.flixster.models.Movie;
 import com.example.flixster.models.MovieDetailsActivity;
 
@@ -23,12 +25,16 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 //Adapter class to "glue" movie data to rv layout
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
     //member vars: context (where adapter is being constructed from/ inflate view) & movies (list of data)
     Context context;
     List<Movie> movies;
+
+    ItemMovieBinding binding;
 
     public MovieAdapter(Context context, List<Movie> movies) {
         this.context = context;
@@ -42,7 +48,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         Log.d("MovieAdapter", "onCreateViewHolder");
         //take in context and inflate item movie xml and return view
-        View movieView =  LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
+        //adapter view binding
+        binding = ItemMovieBinding.inflate(LayoutInflater.from(context), parent, false);
+        View movieView = binding.getRoot();
         //wraps view in VH and returns it
         return new ViewHolder(movieView);
     }
@@ -84,18 +92,25 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
             String imageUrl;
+            int placeholder;
             //if mode = land imageURL = backdrop else poster
             if(context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 imageUrl = movie.getBackdropPath();
+                placeholder = R.drawable.backdrop_placeholder;
             }
             else {
                 imageUrl = movie.getPosterPath();
+                placeholder = R.drawable.poster_placeholder;
             }
             //add library to render image using Glide
-            //placeholder
+            //Glide with placeholder and rounded corners
+            int radius = 30; // corner radius, higher value = more rounded
+            int margin = 10;
             Glide.with(context)
                     .load(imageUrl)
-                    .placeholder(R.drawable.placeholder)
+                    .placeholder(placeholder)
+                    //.centerCrop() // scale image to fill the entire ImageView
+                    .transform(new RoundedCornersTransformation(radius, margin))
                     .into(ivPoster);
         }
 
