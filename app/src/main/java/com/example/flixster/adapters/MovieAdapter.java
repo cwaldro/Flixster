@@ -48,9 +48,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         Log.d("MovieAdapter", "onCreateViewHolder");
         //take in context and inflate item movie xml and return view
-        //adapter view binding
-        binding = ItemMovieBinding.inflate(LayoutInflater.from(context), parent, false);
-        View movieView = binding.getRoot();
+        View movieView =  LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
         //wraps view in VH and returns it
         return new ViewHolder(movieView);
     }
