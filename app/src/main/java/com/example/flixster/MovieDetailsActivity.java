@@ -1,10 +1,9 @@
-package com.example.flixster.models;
+package com.example.flixster;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,10 +13,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
-import com.example.flixster.MainActivity;
-import com.example.flixster.MovieTrailerActivity;
-import com.example.flixster.R;
 import com.example.flixster.databinding.ActivityMovieDetailsBinding;
+import com.example.flixster.models.Movie;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,7 +43,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //view binding stores ActivityMovieDetails.xml -> binding var
         ActivityMovieDetailsBinding binding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());
-//        setContentView(R.layout.activity_movie_details);
 
         //activity layout stored in root
         View view = binding.getRoot();

@@ -3,7 +3,6 @@ package com.example.flixster.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.flixster.R;
-import com.example.flixster.databinding.ItemMovieBinding;
 import com.example.flixster.models.Movie;
-import com.example.flixster.models.MovieDetailsActivity;
+import com.example.flixster.MovieDetailsActivity;
 
 import org.jetbrains.annotations.NotNull;
 import org.parceler.Parcels;
@@ -33,8 +31,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     //member vars: context (where adapter is being constructed from/ inflate view) & movies (list of data)
     Context context;
     List<Movie> movies;
-
-    ItemMovieBinding binding;
 
     public MovieAdapter(Context context, List<Movie> movies) {
         this.context = context;
